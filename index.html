@@ -76,8 +76,12 @@ nav.solid {
 .nav-links { display:flex; gap:36px; list-style:none; margin-right:auto; }
 .nav-links a { font-size:.68rem; letter-spacing:.22em; text-transform:uppercase; color:var(--grey); text-decoration:none; transition:color .25s; }
 .nav-links a:hover { color:var(--gold); }
+.nav-actions { display:flex; align-items:center; gap:10px; }
 .nav-cta { padding:9px 22px; border:1px solid var(--gold-border); color:var(--gold); font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; text-decoration:none; transition:all .25s; }
 .nav-cta:hover { background:var(--gold-glow); border-color:var(--gold); }
+.nav-icon { width:38px; height:38px; border:1px solid var(--gold-border); color:var(--gold); display:inline-flex; align-items:center; justify-content:center; text-decoration:none; transition:all .25s; }
+.nav-icon:hover { background:var(--gold-glow); border-color:var(--gold); transform:translateY(-1px); }
+.nav-icon svg { width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
 
 /* ── HERO ── */
 .hero {
@@ -265,7 +269,7 @@ footer { margin-top:90px; padding:52px 7vw; border-top:1px solid var(--gold-bord
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
-  .nav-links,.nav-cta { display:none; }
+  .nav-links,.nav-cta,.nav-actions { display:none; }
   nav { display:none; }
   .hero { padding-top:72px; }
   .hero-content { grid-template-columns:1fr; gap:36px; }
@@ -301,7 +305,15 @@ footer { margin-top:90px; padding:52px 7vw; border-top:1px solid var(--gold-bord
     <li><a href="#mag">Magazine</a></li>
     <li><a href="#about">About</a></li>
   </ul>
-  <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=rishitasharma1624%40gmail.com&amp;su=Portfolio%20Inquiry" target="_blank" rel="noopener noreferrer" onclick="open_contact(event,this.href)" class="nav-cta">Hire Me</a>
+  <div class="nav-actions">
+    <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=rishitasharma1624%40gmail.com&amp;su=Portfolio%20Inquiry" target="_blank" rel="noopener noreferrer" onclick="open_contact(event,this.href)" class="nav-cta">Hire Me</a>
+    <a href="tel:+917827884173" class="nav-icon" aria-label="Call Rishita Sharma" title="Call Rishita Sharma">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.32 1.77.59 2.61a2 2 0 0 1-.45 2.11L8 9.7a16 16 0 0 0 6.3 6.3l1.26-1.26a2 2 0 0 1 2.11-.45c.84.27 1.71.47 2.61.59A2 2 0 0 1 22 16.92z"></path></svg>
+    </a>
+    <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=rishitasharma1624%40gmail.com&amp;su=Portfolio%20Inquiry" target="_blank" rel="noopener noreferrer" onclick="open_contact(event,this.href)" class="nav-icon" aria-label="Email Rishita Sharma" title="Email Rishita Sharma">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path><path d="m22 7-10 6L2 7"></path></svg>
+    </a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -455,14 +467,14 @@ footer { margin-top:90px; padding:52px 7vw; border-top:1px solid var(--gold-bord
 
     <div class="card" onclick="open_m('mln')">
       <div class="thumb t-edu has-img">
-        <img class="thumb-img" src="Portfolio/MLNB%20Academy%20-%20Full%20Stack.png" alt="MLN Academy website portfolio preview">
-        <div class="thumb-inner">Learning Platform</div>
+        <img class="thumb-img" src="Portfolio/MLNB%20Academy%20-%20Full%20Stack.png" alt="MLNB Academy website portfolio preview">
+        <div class="thumb-inner">Esthetician Training</div>
         <div class="card-ov"><span class="ov-btn">View Project</span></div>
       </div>
       <div class="cbody">
         <p class="ccat">Education · Conversion Copy</p>
-        <h3 class="ctitle">MLN Academy — Online Learning</h3>
-        <p class="cdesc">Motivating, outcome-focused website copy for an online learning and training platform.</p>
+        <h3 class="ctitle">MLNB Academy — Esthetician Training</h3>
+        <p class="cdesc">Motivating, outcome-focused website copy for an esthetician training platform.</p>
       </div>
     </div>
 
@@ -514,13 +526,13 @@ footer { margin-top:90px; padding:52px 7vw; border-top:1px solid var(--gold-bord
       <div class="thumb t-life has-img">
         <img class="thumb-img" src="Portfolio/Royce%20India%20-%20Depth%20In%20Every%20Word.png" alt="Royce India blog portfolio preview">
         <span class="badge">Blog</span>
-        <div class="thumb-inner">Lifestyle &amp; Style Stories</div>
+        <div class="thumb-inner">Food &amp; Beverage Stories</div>
         <div class="card-ov"><span class="ov-btn">Read Blog</span></div>
       </div>
       <div class="cbody">
-        <p class="ccat">Lifestyle &amp; Fashion · Brand Blog</p>
+        <p class="ccat">Food &amp; Beverage · Brand Blog</p>
         <h3 class="ctitle">Royce India Blog</h3>
-        <p class="cdesc">Premium lifestyle and fashion blog posts for a refined Indian brand.</p>
+        <p class="cdesc">Premium food and beverage blog posts for a refined Indian brand.</p>
       </div>
     </div>
 
@@ -773,10 +785,10 @@ const P = {
   karam:{icon:'🛡',cat:'Website Design & Strategy · Safety Equipment',title:'KARAM Online — Safety Brand Website',desc:'End-to-end website content for KARAM, India\'s most trusted personal protective equipment brand. The work spans product copy, category pages, brand narrative, and UX-focused service content — balancing technical precision with approachable brand personality.',chips:['Brand Copy','Product Descriptions','Category Pages','UX Writing','Safety Industry'],link:'https://karamonline.com/'},
   ilashi:{icon:'✨',cat:'Website Design & Strategy · Luxury Beauty',title:'iowa iBrow iLash — Luxury Beauty Brand',desc:'Luxury beauty copywriting for iowa iBrow iLash — sensory, evocative, and built for conversion. The copy positions the brand as a destination for precise brow and lash artistry, blending aspirational language with clear, trust-building service communication.',chips:['Luxury Copywriting','Beauty Industry','Brand Storytelling','Service Copy','Conversion-Focused'],link:'https://ibrowilash.com/'},
   cuppa:{icon:'☕',cat:'Website Design & Strategy · Food & Beverage',title:'Cuppa Nord — Nordic Coffee Brand',desc:'Brand storytelling and full website copy for Cuppa Nord, a Nordic-inspired artisan coffee brand. Writing evokes the spirit of Scandinavian simplicity — warm, considered, deeply connected to ritual and craft. Product descriptions, homepage, and about copy included.',chips:['Brand Storytelling','Product Descriptions','F&B Copywriting','Nordic Tone','Website Content'],link:'https://cuppanord.com/'},
-  mln:{icon:'📚',cat:'Website Design & Strategy · Education',title:'MLN Academy — Online Learning Platform',desc:'Educational content strategy and web copy for MLN Academy. Copy is motivating, outcome-focused, and designed to inspire confidence in prospective learners — moving them seamlessly from curiosity to enrolment.',chips:['Education Copy','Conversion Copywriting','Landing Pages','eLearning','Brand Voice'],link:'https://www.mlnbacademy.click/index.html'},
+  mln:{icon:'📚',cat:'Website Design & Strategy · Education',title:'MLNB Academy — Esthetician Training',desc:'Educational content strategy and web copy for MLNB Academy. Copy is motivating, outcome-focused, and designed to inspire confidence in prospective learners — moving them seamlessly from curiosity to enrolment.',chips:['Education Copy','Conversion Copywriting','Landing Pages','Esthetician Training','Brand Voice'],link:'https://www.mlnbacademy.click/index.html'},
   'wm-blog':{icon:'✍',cat:'Blogs & Long-form Editorial · Solar Energy',title:'WattMonk Blog — Solar Industry Insights',desc:'Thought leadership blog content for WattMonk covering solar industry trends, installation guides, financing explainers, and policy updates. Each piece blends genuine industry expertise with SEO strategy to drive organic traffic and build brand authority.',chips:['Blog Writing','SEO Content','Technical Writing','Thought Leadership','Solar Industry'],link:'https://wattmonk.com/blog'},
   'en-blog':{icon:'✍',cat:'Blogs & Long-form Editorial · Field Services',title:'Ensite Services Blog — Operations & Tech',desc:'Strategic B2B blog content for Ensite covering operational efficiency, field workforce management, and technology trends. Written to engage both technical readers and business decision-makers with equal authority and clarity.',chips:['B2B Blog','Technical Content','Industry Insights','SEO Strategy','Thought Leadership'],link:'https://ensiteservices.com/blogs/'},
-  royce:{icon:'✍',cat:'Blogs & Long-form Editorial · Lifestyle & Fashion',title:'Royce India Blog — Lifestyle & Style',desc:'Premium lifestyle and fashion blog content for Royce India. Articles blend product storytelling with genuine lifestyle insight — building brand authority while engaging a discerning, style-conscious readership.',chips:['Lifestyle Writing','Fashion Blog','Brand Authority','Long-form Content','Premium Tone'],link:'https://royceindia.com/blogs/posts'},
+  royce:{icon:'✍',cat:'Blogs & Long-form Editorial · Food & Beverage',title:'Royce India Blog — Food & Beverage',desc:'Premium food and beverage blog content for Royce India. Articles blend product storytelling with genuine brand insight — building brand authority while engaging a discerning readership.',chips:['Food & Beverage Writing','Brand Blog','Brand Authority','Long-form Content','Premium Tone'],link:'https://royceindia.com/blogs/posts'},
   exhale:{icon:'🌿',cat:'Blogs & Long-form Editorial · Wellness',title:'Exhale Well — Wellness Brand Blog',desc:'Mindful, science-informed wellness content that educates, inspires, and builds community trust. Blog posts align with Exhale Well\'s brand ethos — honest, warm, evidence-based, and deeply human.',chips:['Wellness Writing','Brand Blog','SEO Content','Community Building','Health & Lifestyle'],link:'https://www.exhalewell.com/'},
   wilder:{icon:'🦋',cat:'Feature Article · Career & Leadership',title:'Wilder Bee Talent Camp — Personal Branding',desc:'A feature article on leveraging personal brand for greater career success, published on Wilder Bee Talent Camp. The piece offers actionable strategy for professionals looking to build authority, visibility, and career momentum through intentional storytelling.',chips:['Feature Article','Career Content','Personal Branding','Thought Leadership'],link:'https://www.wilderbeetalentcamp.com/post/tips-to-leverage-personal-brand-for-greater-career-success'},
   sab:{icon:'📸',cat:'Social Media & Brand Voice · Fashion',title:'Sab Collection — Instagram',desc:'Social media content strategy and caption copy for Sab Collection, a fashion-forward brand on Instagram. Every piece of copy is crafted to drive engagement, reflect brand identity, and convert casual scrollers into loyal customers.',chips:['Instagram Copy','Social Strategy','Fashion Content','Brand Voice','Engagement Copy'],link:'https://www.instagram.com/sab__collection/'},
