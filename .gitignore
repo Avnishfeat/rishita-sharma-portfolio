@@ -1,0 +1,16 @@
+# Local deployment output and archives
+deploy/
+*.zip
+
+# FreeKit/PageDrop deployment credentials
+pagedrop-deploy.json
+
+# Local QA screenshots
+*-preview.png
+logo-cards-live-preview.png
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
