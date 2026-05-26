@@ -31,6 +31,7 @@ body {
   overflow-x: hidden;
   cursor: auto;
 }
+section,.stats { scroll-margin-top:96px; }
 
 /* ── CURSOR ── */
 #cur,#cur2 { display:none; position:fixed; pointer-events:none; border-radius:50%; transform:translate(-50%,-50%); }
@@ -83,6 +84,10 @@ nav.solid {
 .nav-icon:hover { background:var(--gold-glow); border-color:var(--gold); transform:translateY(-1px); }
 .nav-icon svg { width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
 .nav-call { width:auto; padding:0 13px; gap:8px; font-size:.65rem; letter-spacing:.08em; white-space:nowrap; }
+.mobile-contact { display:none; }
+.mobile-contact a { border:1px solid var(--gold-border); color:var(--gold); text-decoration:none; min-height:42px; display:flex; align-items:center; justify-content:center; gap:8px; font-size:.58rem; letter-spacing:.12em; text-transform:uppercase; white-space:nowrap; }
+.mobile-contact a:hover { background:var(--gold-glow); border-color:var(--gold); }
+.mobile-contact svg { width:15px; height:15px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex:0 0 auto; }
 
 /* ── HERO ── */
 .hero {
@@ -141,7 +146,7 @@ nav.solid {
 .stat-l { font-size:.62rem; letter-spacing:.24em; text-transform:uppercase; color:var(--grey); margin-top:8px; display:block; }
 
 /* ── ABOUT ── */
-.about { padding:90px 7vw; display:grid; grid-template-columns:1.1fr .9fr; gap:80px; align-items:center; }
+.about { padding:90px 7vw; display:grid; grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr); gap:clamp(44px,6vw,86px); align-items:center; }
 .about-tag { font-size:.6rem; letter-spacing:.35em; text-transform:uppercase; color:var(--gold); display:flex; align-items:center; gap:14px; margin-bottom:22px; }
 .about-tag::before { content:''; width:36px; height:1px; background:var(--gold); }
 .about-h { font-family:var(--serif); font-size:clamp(2rem,3.8vw,3.4rem); font-weight:300; color:var(--white); line-height:1.12; margin-bottom:28px; }
@@ -151,11 +156,18 @@ nav.solid {
 .sk { padding:5px 14px; border:1px solid var(--gold-border); font-size:.58rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); transition:all .25s; }
 .sk:hover { background:var(--gold-glow); border-color:var(--gold); }
 .about-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
-.about-vis { position:relative; height:380px; }
-.av1 { position:absolute; width:220px; height:290px; border:1px solid rgba(201,169,110,.12); top:0; right:60px; }
-.av2 { position:absolute; width:160px; height:200px; background:rgba(201,169,110,.03); border:1px solid rgba(201,169,110,.07); bottom:0; right:0; }
-.av3 { position:absolute; width:90px; height:90px; background:var(--gold); opacity:.06; top:60px; right:40px; animation:f3 6s ease-in-out infinite; }
-.av-init { position:absolute; font-family:var(--serif); font-size:8rem; font-weight:300; font-style:italic; color:rgba(201,169,110,.04); top:50%; left:50%; transform:translate(-50%,-50%); white-space:nowrap; pointer-events:none; user-select:none; }
+.about-vis { position:relative; height:420px; min-width:0; }
+.about-showcase { position:absolute; inset:0; border:1px solid var(--gold-border); background:linear-gradient(145deg,rgba(201,169,110,.08),rgba(6,6,6,.88)); overflow:hidden; box-shadow:0 22px 70px rgba(0,0,0,.28); }
+.about-showcase::before { content:''; position:absolute; inset:18px -18px -18px 18px; border:1px solid rgba(201,169,110,.14); pointer-events:none; z-index:-1; }
+.about-showcase::after { content:''; position:absolute; inset:0; background:linear-gradient(120deg,rgba(6,6,6,.08),rgba(6,6,6,.38)); pointer-events:none; }
+.about-slide { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:14px; opacity:0; animation:aboutSwap 10s ease-in-out infinite; }
+.about-slide:nth-child(2) { animation-delay:5s; }
+.about-slide img { width:100%; height:100%; object-fit:contain; display:block; filter:saturate(.92) contrast(1.02); }
+@keyframes aboutSwap { 0%,42%{opacity:1; transform:scale(1)} 50%,100%{opacity:0; transform:scale(1.025)} }
+@media (prefers-reduced-motion:reduce){
+  .about-slide { animation:none; opacity:1; }
+  .about-slide:nth-child(2) { display:none; }
+}
 
 /* ── SECTION ── */
 .sec { padding:70px 0 30px; }
@@ -272,23 +284,34 @@ footer { margin-top:90px; padding:52px 7vw; border-top:1px solid var(--gold-bord
 @media(max-width:900px){
   .nav-links,.nav-cta,.nav-actions { display:none; }
   nav { display:none; }
+  .mobile-contact { display:grid; grid-template-columns:1fr 1.35fr 42px; gap:8px; padding:12px 5vw; background:rgba(6,6,6,.94); border-bottom:1px solid var(--gold-border); position:sticky; top:0; z-index:30; backdrop-filter:blur(12px); }
+  section,.stats { scroll-margin-top:128px; }
   .hero { padding-top:72px; }
   .hero-content { grid-template-columns:1fr; gap:36px; }
   .hero-photo { width:min(76vw,320px); justify-self:start; }
   .about { grid-template-columns:1fr; gap:40px; }
-  .about-vis { display:none; }
+  .about-vis { display:block; height:auto; aspect-ratio:16/11; width:100%; max-width:720px; }
   .stats { grid-template-columns:1fr 1fr; }
   .grid,.grid.wide { padding:0 5vw; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); }
   .sec-head { padding:0 5vw; }
   .div { margin:0 5vw; }
 }
 @media(max-width:540px){
+  .mobile-contact { grid-template-columns:1fr 1fr; }
+  .mobile-contact .mobile-mail { grid-column:1 / -1; }
+  .mobile-contact a { font-size:.54rem; letter-spacing:.1em; padding:0 8px; }
   .grid,.grid.wide { grid-template-columns:1fr; }
   .stats { grid-template-columns:1fr 1fr; }
   .mbox { width:94vw; }
   .mhead,.mbody { padding:20px; }
   .hero-btns a { width:100%; justify-content:center; }
   .hero-name { font-size:clamp(3.4rem,18vw,5rem); }
+  .about { padding:64px 5vw; }
+  .about-vis { aspect-ratio:4/5; }
+  .about-slide { padding:10px; }
+  footer { align-items:stretch; }
+  .flinks { width:100%; display:grid; grid-template-columns:1fr; }
+  .flink { justify-content:center; padding:11px 12px; letter-spacing:.12em; }
 }
 </style>
 </head>
@@ -317,6 +340,18 @@ footer { margin-top:90px; padding:52px 7vw; border-top:1px solid var(--gold-bord
     </a>
   </div>
 </nav>
+
+<div class="mobile-contact" aria-label="Quick contact">
+  <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=rishitasharma1624%40gmail.com&amp;su=Portfolio%20Inquiry" target="_blank" rel="noopener noreferrer" onclick="open_contact(event,this.href)">Hire Me</a>
+  <a href="tel:+917827884173" aria-label="Call Rishita Sharma at 7827884173">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.32 1.77.59 2.61a2 2 0 0 1-.45 2.11L8 9.7a16 16 0 0 0 6.3 6.3l1.26-1.26a2 2 0 0 1 2.11-.45c.84.27 1.71.47 2.61.59A2 2 0 0 1 22 16.92z"></path></svg>
+    <span>7827884173</span>
+  </a>
+  <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=rishitasharma1624%40gmail.com&amp;su=Portfolio%20Inquiry" target="_blank" rel="noopener noreferrer" onclick="open_contact(event,this.href)" class="mobile-mail" aria-label="Email Rishita Sharma">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path><path d="m22 7-10 6L2 7"></path></svg>
+    <span>Email</span>
+  </a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -348,7 +383,7 @@ footer { margin-top:90px; padding:52px 7vw; border-top:1px solid var(--gold-bord
 </section>
 
 <!-- STATS -->
-<div class="stats rv" id="about">
+<div class="stats rv" id="stats">
   <div class="stat"><span class="stat-n">16+</span><span class="stat-l">Brands Served</span></div>
   <div class="stat"><span class="stat-n">5+</span><span class="stat-l">Years of Craft</span></div>
   <div class="stat"><span class="stat-n">8</span><span class="stat-l">Content Verticals</span></div>
@@ -356,7 +391,7 @@ footer { margin-top:90px; padding:52px 7vw; border-top:1px solid var(--gold-bord
 </div>
 
 <!-- ABOUT -->
-<section class="about rv2">
+<section class="about rv2" id="about">
   <div>
     <p class="about-tag">The Strategist Behind the Words</p>
     <h2 class="about-h">Crafting <i>narratives</i> that move people to act.</h2>
@@ -381,10 +416,14 @@ footer { margin-top:90px; padding:52px 7vw; border-top:1px solid var(--gold-bord
     </div>
   </div>
   <div class="about-vis">
-    <div class="av1"></div>
-    <div class="av2"></div>
-    <div class="av3"></div>
-    <div class="av-init">RS</div>
+    <div class="about-showcase" aria-label="Selected content work examples">
+      <div class="about-slide">
+        <img src="Portfolio/about-ensite.jpeg" alt="Ensite content work example">
+      </div>
+      <div class="about-slide">
+        <img src="Portfolio/about-wattmonk.jpeg" alt="WattMonk content work example">
+      </div>
+    </div>
   </div>
 </section>
 
