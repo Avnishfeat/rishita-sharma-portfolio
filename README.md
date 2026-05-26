@@ -1,8 +1,6 @@
 # Rishita Sharma Portfolio
 
-Live site: https://avnishfeat.github.io/rishita-sharma-portfolio/
-
-Backup preview: https://freekit.dev/s/rishita-sharma/
+Live site: https://freekit.dev/s/rishita-sharma/
 
 This is a static portfolio site. The main editable file is `index.html`, and all images/resume files are inside the `Portfolio` folder.
 
@@ -14,7 +12,7 @@ This is a static portfolio site. The main editable file is `index.html`, and all
 4. Make the edit.
 5. Click `Commit changes`.
 
-After a commit, GitHub Pages republishes the website automatically. It can take a minute or two for the live site to refresh.
+After a commit, GitHub Actions republishes the FreeKit website automatically. It can take a minute or two for the live site to refresh.
 
 ## Replacing Images
 
@@ -40,4 +38,4 @@ They are intentionally ignored by git.
 
 ## Hosting
 
-This repo can be hosted with GitHub Pages from the root of the `main` branch because `index.html` is already at the top level.
+The live website is deployed to FreeKit automatically from GitHub Actions whenever the `main` branch changes.

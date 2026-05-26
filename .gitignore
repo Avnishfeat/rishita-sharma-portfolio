@@ -1,5 +1,6 @@
 # Local deployment output and archives
 deploy/
+dist-freekit/
 *.zip
 
 # FreeKit/PageDrop deployment credentials

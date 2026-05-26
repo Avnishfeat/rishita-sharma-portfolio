@@ -1,0 +1,41 @@
+name: Deploy to FreeKit
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: freekit-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      FREEKIT_SITE_ID: rishita-sharma
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install image optimizer
+        run: python -m pip install --upgrade pillow
+
+      - name: Build optimized FreeKit package
+        run: python scripts/build_freekit.py
+
+      - name: Deploy to FreeKit
+        run: |
+          curl --fail-with-body -X PUT "https://freekit.dev/api/v1/sites/${FREEKIT_SITE_ID}" \
+            -H "X-Delete-Token: ${{ secrets.FREEKIT_DELETE_TOKEN }}" \
+            -F "file=@freekit-site.zip;type=application/zip"
