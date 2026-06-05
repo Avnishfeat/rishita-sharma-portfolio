@@ -1,0 +1,6 @@
+[build]
+  command = "python -m pip install --upgrade pillow && python scripts/build_freekit.py"
+  publish = "dist-freekit"
+
+[build.environment]
+  PYTHON_VERSION = "3.12"

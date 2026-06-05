@@ -1,6 +1,7 @@
 # Local deployment output and archives
 deploy/
 dist-freekit/
+.netlify/
 *.zip
 
 # FreeKit/PageDrop deployment credentials
